@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${PostDetail}"></title>
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/phone.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 130px auto 20px auto; /* Center horizontally and adjust top margin */
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-top: 0;
+            color: #333; /* Dark text color */
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+            border-radius: 4px; /* Rounded corners for images */
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+       
+    </style>
+</head>
+<body>
+
+    <nav data-scroll data-scroll-sticky data-scroll-target=".main">
+        <div class="logo">
+            <img src="/imgs/final_logo.png" alt="logo">
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 th:text="${post.title}"></h1>
+         <!--<img th:src="@{/uploads/{imageName}(imageName=${post.imageName})}" alt="Post Image"/>-->
+         
+          <img th:src="@{${post.getImageUrl()}}" alt="Post Image" />
+        <p th:text="${post.content}"></p>
+       
+        <a href="/posts">Back to Posts</a>
+    </div>
+
+    <div class="section13" id="section13">
+        <div class="top">
+            <div class="left">
+                <img src="/imgs/microsoft.png" alt="microsoft">
+                <img src="/imgs/amazon.png" alt="amazon">
+                <img src="/imgs/veeam.png" alt="veeam">
+                <img src="/imgs/vmware.png" alt="vmware">
+                <img src="/imgs/aws.png" alt="aws">
+                <img src="/imgs/azure.png" alt="azure">
+            </div>
+            <div class="right">
+                <h3>Loving City, Dehradun <br> askus@Synergistic.com</h3>
+                <a href="https://www.linkedin.com/ydv_kunjesh" target="_blank">
+                    <i class="ri-linkedin-box-fill"></i>Linkedin
+                </a>
+            </div>
+        </div>
+        <div class="bottom">
+            <h3>Synergistic Consultancy © 2024. All rights reserved.</h3>
+            <h3>
+                <i class="ri-heart-fill"></i> Developed by Synergistic Team
+            </h3>
+        </div>
+    </div>
+
+</body>
+</html>

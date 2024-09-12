@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Post</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/phone.css">
+</head>
+<body>
+
+
+<nav data-scroll data-scroll-sticky data-scroll-target=".main">
+            <div class="logo">
+                <img src="/imgs/final_logo.png" alt="logo">
+            </div>
+            
+            
+    <h1>Edit Post</h1>
+    <form th:action="@{/posts/{id}(id=${post.id})}" th:object="${post}" method="post" enctype="multipart/form-data">
+        <input type="hidden" th:field="*{id}" />
+        <label for="title">Title:</label>
+        <input type="text" id="title" th:field="*{name}" />
+        <label for="content">Content:</label>
+        <textarea id="content" th:field="*{content}"></textarea>
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image"/>
+        <button type="submit">Update Post</button>
+    </form>
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}"></p>
+    </div>
+    <a href="/posts">Back to Posts</a>
+    
+    
+     <div class="section13" id="section13">
+            <div class="top">
+                <div class="toBorder">
+                    <div class="border"></div>
+                </div>
+                <div class="left">
+                    <img src="/imgs/microsoft.png" alt="microsoft">
+                    <img src="/imgs/amazon.png" alt="amazon">
+                    <img src="/imgs/veeam.png" alt="veeam">
+                    <img src="/imgs/vmware.png" alt="vmware">
+                    <img src="/imgs/aws.png" alt="aws">
+                    <img src="/imgs/azure.png" alt="azure">
+                </div>
+                <div class="right">
+                    <h3> Loving City, Dehradun <br> askus@Synergistic.com</h3>
+                    <a href="https://www.linkedin.com/ydv_kunjesh" target="_blank">
+                        <i class="ri-linkedin-box-fill"></i>Linkedin
+                    </a>
+                </div>
+            </div>
+            <div class="bottom">
+                <h3>Synergistic Consultancy © 2024. All rights reserved.</h3>
+                <h3>
+                    <i class="ri-heart-fill"></i> Developed by Synergistic Team
+                </h3>
+            </div>
+        </div>
+    
+</body>
+</html>

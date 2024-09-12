@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/phone.css">
+    
+    
+</head>
+<body>
+    <nav data-scroll data-scroll-sticky data-scroll-target=".main">
+        <div class="logo">
+            <img src="/imgs/final_logo.png" alt="Synergistic Consultancy logo">
+        </div>
+        <h1>Error</h1>
+        <p th:text="${errorMessage}">An error occurred. Please try again later.</p>
+        <a href="/">Back to Home</a>
+    </nav>
+
+    
+</body>
+</html>

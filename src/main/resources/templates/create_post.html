@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Post</title>
+    <style>
+    /* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light background for the page */
+}
+
+/* Container for the form */
+.b {
+    background: #fff; /* White background for the box */
+    border: 1px solid #ddd; /* Light border around the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    max-width: 600px; /* Maximum width of the form container */
+    margin: 170px auto 20px auto; /* 400px top margin, center horizontally, 20px bottom margin */
+    padding: 20px; /* Padding inside the box */
+}
+
+/* Heading styling */
+.b h1 {
+    font-size: 24px;
+    margin-bottom: 20px; /* Space below the header */
+    color: #333; /* Dark text color */
+    text-align: center; /* Center the header text */
+}
+
+/* Label styling */
+.b label {
+    display: block;
+    font-weight: bold; /* Bold labels */
+    margin-top: 10px; /* Space above each label */
+    color: #333; /* Dark text color */
+}
+
+/* Input fields styling */
+.b input[type="text"],
+.b textarea,
+.b input[type="file"] {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Padding inside input fields */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 4px; /* Slightly rounded corners */
+    margin-top: 5px; /* Space above input fields */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+/* Textarea styling */
+.b textarea {
+    height: 150px; /* Fixed height for the textarea */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Button styling */
+.b button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff; /* White text color */
+    background-color: black; /* Blue background color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px; /* Space above the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.b button:hover {
+    background-color: #404040; 
+}
+
+/* Link styling */
+.b a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff; /* Blue text color */
+    text-decoration: none;
+    font-weight: bold; /* Bold link text */
+}
+
+.b a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Error message styling */
+.b .error-message {
+    color: #ff0000; /* Red text color for error messages */
+    margin-top: 10px; /* Space above the error message */
+    font-weight: bold; /* Bold error message text */
+}
+
+    
+    </style>
+    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/phone.css">
+</head>
+<body>
+
+<nav data-scroll data-scroll-sticky data-scroll-target=".main">
+            <div class="logo">
+                <img src="/imgs/final_logo.png" alt="logo">
+            </div>
+            </nav>
+<div class="b">
+    <h1>Create New Post</h1>
+    <form th:action="@{/posts}" th:object="${post}" method="post" enctype="multipart/form-data">
+        <label for="title">Blog Title:</label>
+        <input type="text" id="title" th:field="*{title}" required />
+
+        <label for="content">Content:</label>
+        <textarea id="content" th:field="*{content}" required></textarea>
+
+        <label for="image">Image:</label>
+        <input type="file" id="image" name="image"/ required>
+
+        <button type="submit">Save Post</button>
+    </form>
+
+    <div th:if="${errorMessage}" class="error-message">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <a href="/posts">Back to Posts</a>
+</div>
+     <div class="section13" id="section13">
+            <div class="top">
+                <div class="toBorder">
+                    <div class="border"></div>
+                </div>
+                <div class="left">
+                    <img src="/imgs/microsoft.png" alt="microsoft">
+                    <img src="/imgs/amazon.png" alt="amazon">
+                    <img src="/imgs/veeam.png" alt="veeam">
+                    <img src="/imgs/vmware.png" alt="vmware">
+                    <img src="/imgs/aws.png" alt="aws">
+                    <img src="/imgs/azure.png" alt="azure">
+                </div>
+                <div class="right">
+                    <h3> Loving City, Dehradun <br> askus@Synergistic.com</h3>
+                    <a href="https://www.linkedin.com/ydv_kunjesh" target="_blank">
+                        <i class="ri-linkedin-box-fill"></i>Linkedin
+                    </a>
+                </div>
+            </div>
+            <div class="bottom">
+                <h3>Synergistic Consultancy © 2024. All rights reserved.</h3>
+                <h3>
+                    <i class="ri-heart-fill"></i> Developed by Synergistic Team
+                </h3>
+            </div>
+        
+    
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Payment Gateway</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        function makePayment() {
+            var options = {
+                "key": "rzp_test_tyz6b04XqpCwfY",
+                "amount": "5000", // Amount is in currency subunits. Example: 5000 subunits = 50 INR
+                "currency": "INR",
+                "name": "Your Company Name",
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo.png",
+                "handler": function (response) {
+                    // Send the payment ID to your backend for processing
+                    fetch('/api/webhook', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            paymentId: response.razorpay_payment_id,
+                            amount: "5000",
+                            currency: "INR",
+                            description: "Test Transaction"
+                        })
+                    })
+                    .then(response => response.text())
+                    .then(data => {
+                        alert("Payment ID: " + response.razorpay_payment_id + "\n" + data);
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+                },
+                "prefill": {
+                    "name": "John Doe",
+                    "email": "john.doe@example.com",
+                    "contact": "9876543210"
+                },
+                "theme": {
+                    "color": "#F37254"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        }
+    </script>
+</head>
+<body>
+    <button onclick="makePayment()">50 Rs Pay</button>
+</body>
+</html>
